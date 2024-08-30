@@ -49,5 +49,17 @@ class Menus
     return !empty($get_menu) ? $get_menu : "";
   }
 
-  public function get_child_menu_items($menu_array, $parent) {}
+  public function get_child_menu_items($menu_array, $parent)
+  {
+    $child_menus = [];
+    if (!empty($menu_array) && is_array($menu_array)) {
+      foreach ($menu_array as $menu_item) {
+        if (intval($menu_item->menu_item_parent) == $parent) {
+          array_push($child_menus, $menu_item);
+        }
+      }
+    }
+
+    return $child_menus;
+  }
 }

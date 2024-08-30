@@ -16,7 +16,6 @@ if (!defined('ABSPATH')) {
 $get_menus = HOMIFY_THEME\Inc\Menus::get_instance();
 $header_menu_id = $get_menus->get_menu_id('Primary-menu');
 $header_menu = wp_get_nav_menu_items($header_menu_id);
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -190,48 +189,41 @@ $header_menu = wp_get_nav_menu_items($header_menu_id);
         ?>
 
         <nav class="gd-menu">
-          <ul>
-            <li class="dropdown">
-              <a href="#">kitchens</a>
-              <ul>
-                <li>
-                  <a href="#">Top 10</a>
-                </li>
-                <li class="dropdown">
-                  <a href="single.html" class="active"> Submenu</a>
-                  <ul>
-                    <li>
-                      <a href="#">Top 10</a>
-                    </li>
-                    <li>
-                      <a href="#">JavaScript</a>
-                    </li>
-                    <li>
-                      <a href="#">PHP &amp; MySQL</a>
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  <a href="#">HTML &amp; CSS</a>
-                </li>
-                <li>
-                  <a href="#">JavaScript</a>
-                </li>
-                <li>
-                  <a href="#">PHP &amp; MySQL</a>
-                </li>
-              </ul>
-            </li>
-            <li><a href="#">Gardens</a></li>
+          <?php if (!empty($header_menu) && is_array($header_menu)): ?>
+            <ul>
+              <?php foreach ($header_menu as $menu_item):
+                if (!$menu_item->menu_item_parent):
+                  $child_menu_items = $get_menus->get_child_menu_items($header_menu, $menu_item->ID);
+                  $has_children =  ! empty($child_menu_items) && is_array($child_menu_items);
+                  if (!$has_children) { ?>
+                    <li><a href="<?php echo esc_html($menu_item->url) ?>"><?php echo esc_html($menu_item->title) ?></a></li>
+                  <?php } else { ?>
+                    <li class="dropdown">
+                      <a href="<?php echo esc_html($menu_item->url) ?>"><?php echo esc_html($menu_item->title) ?>
+                        <ul>
+                          <?php
+                          foreach ($child_menu_items as $child_menu_item) { ?>
+                            <li>
+                              <a href="<?php echo esc_html($child_menu_item->url) ?>"><?php echo esc_html($child_menu_item->title) ?></a>
+                            </li>
+                          <?php }
+                          ?>
 
-            <svg class="cancel-btn" fill="#000" xmlns="http://www.w3.org/2000/svg" height="20" width="20"
-              viewBox="0 0 384 512">
-              <path
-                d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z">
-              </path>
-            </svg>
-          </ul>
+                        </ul>
+                    </li>
+              <?php }
+                endif;
+              endforeach; ?>
 
+
+              <svg class="cancel-btn" fill="#000" xmlns="http://www.w3.org/2000/svg" height="20" width="20"
+                viewBox="0 0 384 512">
+                <path
+                  d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z">
+                </path>
+              </svg>
+            </ul>
+          <?php endif; ?>
         </nav>
 
         <?php
