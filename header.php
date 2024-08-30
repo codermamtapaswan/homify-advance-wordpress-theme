@@ -10,6 +10,13 @@ if (!defined('ABSPATH')) {
   exit; // Exit if accessed directly.
 }
 
+
+// https://developer.wordpress.org/reference/functions/wp_get_nav_menu_items/
+
+$get_menus = HOMIFY_THEME\Inc\Menus::get_instance();
+$header_menu_id = $get_menus->get_menu_id('Primary-menu');
+$header_menu = wp_get_nav_menu_items($header_menu_id);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -174,44 +181,16 @@ if (!defined('ABSPATH')) {
           </svg>
         </div>
 
-        <a href="index.html" class="gd-logo">
-          <img src="assets/images/logo.svg" alt="Guideet logo" class="img-fluid">
-        </a>
+        <?php
+        if (function_exists('the_custom_logo')) {
+          the_custom_logo();
+        } else {
+          bloginfo('name');
+        }
+        ?>
 
         <nav class="gd-menu">
           <ul>
-            <li class="dropdown">
-              <a href="#" class="active">Keyhole Gardening</a>
-
-              <ul>
-                <li>
-                  <a href="#">Top 10</a>
-                </li>
-                <li class="dropdown">
-                  <a href="single.html" class="active"> Submenu</a>
-                  <ul>
-                    <li>
-                      <a href="#">Top 10</a>
-                    </li>
-                    <li>
-                      <a href="#">JavaScript</a>
-                    </li>
-                    <li>
-                      <a href="#">PHP &amp; MySQL</a>
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  <a href="#">HTML &amp; CSS</a>
-                </li>
-                <li>
-                  <a href="#">JavaScript</a>
-                </li>
-                <li>
-                  <a href="#">PHP &amp; MySQL</a>
-                </li>
-              </ul>
-            </li>
             <li class="dropdown">
               <a href="#">kitchens</a>
               <ul>
@@ -243,16 +222,28 @@ if (!defined('ABSPATH')) {
                 </li>
               </ul>
             </li>
-            <li><a href="#">Celebrity style</a></li>
             <li><a href="#">Gardens</a></li>
 
-            <svg class="cancel-btn" fill="#000" xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 384 512">
-              <path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z">
+            <svg class="cancel-btn" fill="#000" xmlns="http://www.w3.org/2000/svg" height="20" width="20"
+              viewBox="0 0 384 512">
+              <path
+                d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z">
               </path>
             </svg>
           </ul>
 
         </nav>
+
+        <?php
+
+        // wp_nav_menu(array(
+        //   'theme_location' => 'Primary-menu',
+        //   'container' => 'nav',
+        //   'container_class' => 'gd-menu',
+        //   'item_wrap' => '<ul id="%1%s" class="%2$s" >%3$s</ul>'
+        // ));
+
+        ?>
 
         <form class="gd-menu-search-form" action="#" method="get">
           <input type="search" placeholder="What can we help you find today?" required="">

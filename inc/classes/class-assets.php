@@ -3,7 +3,7 @@
 /**
  *  Enqueue Theme assets
  * 
- * @pacakage Managetrix
+ * @pacakage Homify
  */
 
 namespace HOMIFY_THEME\Inc;

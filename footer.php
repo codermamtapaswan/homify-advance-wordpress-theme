@@ -24,23 +24,14 @@
             </div>
             <div class="col-lg-9">
               <div class="gd-shadow-cont">
-                <ul class="grid-3">
-                  <li><a href="index.html">Home Page</a></li>
-                  <li><a href="all-author.html">all-author</a></li>
-                  <li><a href="author-single.html">Author Single Page</a></li>
-                  <li><a href="category.html">category page</a></li>
-                  <li><a href="contact.html">Contact us</a></li>
-                  <li><a href="page.html">Page - template</a></li>
-                  <li><a href="single.html">single page </a></li>
-                  <li><a href="404.html">404 Page</a></li>
-                  <li><a href="search-not-found.html">search not found</a></li>
-                  <li><a href="thankyou.html">Thank you Page</a></li>
-                  <li><a href="single.html">single page </a></li>
-                  <li><a href="all-author.html">all-author</a></li>
-                  <li><a href="author-single.html">Author Single Page</a></li>
-                  <li><a href="category.html">category page</a></li>
-                  <li><a href="contact.html">Contact us</a></li>
-                </ul>
+                <?php
+                wp_nav_menu(array(
+                  'theme_location' => 'Footer-category-menu',
+                  'container' => 'ul',
+                  'container_class' => 'grid-3',
+                  'item_wrap' => '<ul id="%1%s" class="%2$s" >%3$s</ul>'
+                ));
+                ?>
               </div>
             </div>
           </div>
@@ -102,17 +93,22 @@
               </div>
             </div>
             <div class="col-lg-8">
-              <div class="link-logo">
-                <a href="#" class="gd-logo">
-                  <img src="assets/images/logo.svg" alt="Guideet logo" class="img-fluid">
-                </a>
-                <ul class="menu">
-                  <li><a href="#">About us</a></li>
-                  <li><a href="#">Contact us</a></li>
-                  <li><a href="#">Authors</a></li>
-                  <li><a href="#">Privacy Policy</a></li>
-                  <li><a href="#">Terms of Use</a></li>
-                </ul>
+              <div class="link-logo gd-logo">
+                <?php
+                if (function_exists('the_custom_logo')) {
+                  the_custom_logo();
+                } else {
+                  bloginfo('name');
+                }
+
+                wp_nav_menu(array(
+                  'theme_location' => 'Footer-menu',
+                  'container' => 'ul',
+                  'container_class' => 'menu',
+                  'item_wrap' => '<ul id="%1%s" class="%2$s" >%3$s</ul>'
+                ));
+                ?>
+
               </div>
             </div>
             <div class="col-lg-2">
