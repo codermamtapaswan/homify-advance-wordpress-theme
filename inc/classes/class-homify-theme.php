@@ -22,6 +22,7 @@ class HOMIFY_THEME
     */
     Assests::get_instance();
     Menus::get_instance();
+    Widget::get_instance();
     $this->setup_hooks();
   }
 
@@ -49,6 +50,7 @@ class HOMIFY_THEME
     add_theme_support('wp-block-styles');
 
     add_editor_style();
+
     // global $content_width;
     // if (isset($content_width)) {
     //   $content_width = 1240;

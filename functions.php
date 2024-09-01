@@ -35,6 +35,7 @@ require_once HOMIFY_DIR_PATH . '/inc/helpers/autoloader.php';
 require_once HOMIFY_DIR_PATH . '/inc/helpers/template-tags.php';
 require_once HOMIFY_DIR_PATH . '/inc/classes/class-homify-theme.php';
 require_once HOMIFY_DIR_PATH . '/inc/classes/class-assets.php';
+// require_once HOMIFY_DIR_PATH . '/inc/classes/class-widget.php';
 
 
 function homify_get_theme_instance()

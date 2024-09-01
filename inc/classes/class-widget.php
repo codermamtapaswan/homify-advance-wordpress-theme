@@ -13,7 +13,7 @@ namespace HOMIFY_THEME\Inc;
 
 use HOMIFY_THEME\Inc\Traits\Singleton;
 
-class Widgets
+class Widget
 {
   use Singleton;
 
@@ -27,7 +27,6 @@ class Widgets
   }
   public function homify_register_sidebar()
   {
-
     register_sidebar(array(
       'name' => __('Front Page', 'homify'),
       'id' => 'homify-front-page-sidebar',
