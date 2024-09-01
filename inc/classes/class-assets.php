@@ -10,8 +10,6 @@ namespace HOMIFY_THEME\Inc;
 
 use HOMIFY_THEME\Inc\Traits\Singleton;
 
-
-
 class Assests
 {
   use Singleton;
