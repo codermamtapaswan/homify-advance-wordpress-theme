@@ -1094,7 +1094,9 @@ table tr th {
   margin-top: 40px;
 }
 
-
+.gd-auth-card .gd-btn {
+  padding: 3px 15px;
+}
 
 /* # Thank You || Search Not Found  || 404 Page
   =================================================*/
