@@ -45,6 +45,44 @@ function homify_get_theme_instance()
 homify_get_theme_instance();
 
 
+function body_custom_class()
+{
+
+  if (is_home()) {
+    $classes[] = 'gd-home-page';
+  }
+  if (is_archive()) {
+    $classes[] = 'mg_category_archive_page';
+  }
+  if (is_author()) {
+    $classes[] = 'author-acrhive-page';
+  }
+  if (is_page()) {
+    $classes[] = 'page-archive';
+  }
+  if (is_search()) {
+    $classes[] = 'search-not-found-page';
+  }
+  if (is_single()) {
+    $classes[] = 'single-archive-page';
+  }
+  if (is_404()) {
+    $classes[] = '404-page';
+  }
+  if (is_page_template('template-pages/thank-you.php')) {
+    $classes[] = 'thankyou-page';
+  }
+  if (is_page_template('template-pages/authors.php')) {
+    $classes[] = 'authors-page';
+  }
+  if (is_page_template('template-pages/contact.php')) {
+    $classes[] = 'contact-page';
+  }
+
+  return $classes;
+}
+add_filter('body_class', 'body_custom_class');
+
 /*Add support for additional image file types
 -----------------------------------------------*/
 

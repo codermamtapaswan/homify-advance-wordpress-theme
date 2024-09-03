@@ -11,31 +11,31 @@
  */
 
 if (!defined('ABSPATH')) {
-  exit; // Exit if accessed directly.
+    exit; // Exit if accessed directly.
 }
 
-get_header(); 
+get_header();
 ?>
 <!-- Section 1 ================= START -->
 <div class="container">
     <div class="page-header grid">
         <p id="breadcrumbs"><span>
-            <span class="breadcrumb_last" aria-current="page">Author Sinlge Page</span></span></p>
+                <span class="breadcrumb_last" aria-current="page">Author Sinlge Page</span></span></p>
         <h1><?php echo get_the_author() ?></h1>
         <div class="gd-timeline">
             <strong>Last Updated:</strong>
-            <span><?php echo get_the_modified_date('F j, Y')?></span>
+            <span><?php echo get_the_modified_date('F j, Y') ?></span>
         </div>
     </div>
 
-    <div class="row row-gap author-acrhive-page">             
+    <div class="row row-gap">
         <div class="col-lg-9 blog-content">
             <?php
-                global $wp_query;
-                $author = $wp_query->get_queried_object();
-                // echo '<pre>';
-                // var_dump($author);
-                echo $author->description;
+            global $wp_query;
+            $author = $wp_query->get_queried_object();
+            // echo '<pre>';
+            // var_dump($author);
+            echo $author->description;
             ?>
             <div class="h5">Follow me :</div>
             <div class="gd-colored-social-links">
@@ -116,15 +116,15 @@ get_header();
                 <div class="gd-auth-card">
                     <div class="auth-img">
                         <?php
-                           echo get_avatar($author->Id, 96, '',$author->display_name,array('class'=>'img-fluid'));
-                        
+                        echo get_avatar($author->Id, 96, '', $author->display_name, array('class' => 'img-fluid'));
+
                         ?>
                     </div>
 
                     <div class="gd-card-content">
-                        <div class="gd-title"><?php echo $author->display_name;?></div>
+                        <div class="gd-title"><?php echo $author->display_name; ?></div>
                         <p>Social Media and Tech Expert</p>
-                    </div>  
+                    </div>
 
                 </div>
             </div>
@@ -135,27 +135,27 @@ get_header();
             <div class="gd-sep"><?php echo get_the_author() ?>'s Posts</div>
 
             <div class="row row-gap">
-               
-                  <?php 
-                if(have_posts()):
-                    while(have_posts()):
-                        the_post();
-                        ?>
 
-                         <div class="col-lg-4 col">
-                            <?php  get_template_part('template-parts/content','card'); ?>
+                <?php
+                if (have_posts()):
+                    while (have_posts()):
+                        the_post();
+                ?>
+
+                        <div class="col-lg-4 col">
+                            <?php get_template_part('template-parts/content', 'card'); ?>
                         </div>
 
-                        <?php
+                <?php
                     endwhile;
                 endif;
-                  ?>
-              
+                ?>
+
             </div>
         </div>
     </div>
 </div>
 <!-- Section 1 =========== END -->
 
-<?php 
+<?php
 get_footer();

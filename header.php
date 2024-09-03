@@ -66,7 +66,7 @@ $header_menu = wp_get_nav_menu_items($header_menu_id);
   </style>
 </head>
 
-<body class="gd-home-page">
+<body <?php body_class() ?>>
 
   <!-- Header  ================================= START -->
   <header>
@@ -236,7 +236,7 @@ $header_menu = wp_get_nav_menu_items($header_menu_id);
         // ));
 
         ?>
-        <?php echo get_search_form(); ?>      
+        <?php echo get_search_form(); ?>
 
         <div class="mob-search-btn">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">

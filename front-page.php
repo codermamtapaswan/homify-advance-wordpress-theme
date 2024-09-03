@@ -16,14 +16,14 @@ if (!defined('ABSPATH')) {
 get_header();
 
 
-// if (is_active_sidebar('homify-front-page-sidebar')) {
-//   dynamic_sidebar('homify-front-page-sidebar');
-// }
+if (is_active_sidebar('homify-front-page-sidebar')) {
+  dynamic_sidebar('homify-front-page-sidebar');
+}
 
 ?>
 <!-- Section 4 ================= START -->
 <div class="container gd-con-3">
-  <!-- <div class="gd-sep">Latest Post</div> -->
+  <div class="gd-sep">Latest Post</div>
   <div class="scroll-cont row">
     <?php
     $sec_4_args = array(
@@ -110,34 +110,34 @@ get_header();
           $catSlug = get_category_link($catID);
 
           if ($query->current_post === 0) {
-            ?>
-              <div class="gd-bg-cont">
-                <div class="gd-card grid-50">
-                  <div class="gd-card-content">
-                    <a href="<?php echo $catSlug; ?>" class="gd-category-btn">
-                      <?php echo $catName; ?>
+      ?>
+            <div class="gd-bg-cont">
+              <div class="gd-card grid-50">
+                <div class="gd-card-content">
+                  <a href="<?php echo $catSlug; ?>" class="gd-category-btn">
+                    <?php echo $catName; ?>
+                  </a>
+                  <a href="<?php echo the_permalink() ?>" class="gd-big-title">
+                    <?php echo  wp_trim_words(get_the_title(), 10) ?>
+                  </a>
+                  <div class="gd-timeline">
+                    <a href="<?php echo get_author_posts_url(get_the_author_meta('ID')) ?>" class="gd-author">
+                      <?php echo get_the_author() ?>
                     </a>
-                    <a href="<?php echo the_permalink() ?>" class="gd-big-title">
-                      <?php echo  wp_trim_words(get_the_title(), 10) ?>
-                    </a>
-                    <div class="gd-timeline">
-                      <a href="<?php echo get_author_posts_url(get_the_author_meta('ID')) ?>" class="gd-author">
-                        <?php echo get_the_author() ?>
-                      </a>
-                    </div>
-                  </div>
-                  <div class="img-placeholder">
-                    <?php
-                    if (has_post_thumbnail()) {
-                      has_post_thumbnail('post-thumbnail', ['class' => 'img-fluid']);
-                    } ?>
                   </div>
                 </div>
+                <div class="img-placeholder">
+                  <?php
+                  if (has_post_thumbnail()) {
+                    has_post_thumbnail('post-thumbnail', ['class' => 'img-fluid']);
+                  } ?>
+                </div>
               </div>
-            <?php
+            </div>
+          <?php
           } else if ($query->current_post === 1) {
-            ?>
-              <div class="row row-gap gd-shadow-cont">
+          ?>
+            <div class="row row-gap gd-shadow-cont">
               <div class="col-lg-6">
                 <div class="gd-card grid-md-30">
                   <div class="img-placeholder">
@@ -172,19 +172,19 @@ get_header();
             if ($query->current_post === 2) echo '<div class="col-lg-6">';
             ?>
               <div class="gd-card-content border-bottom">
-                  <a href="<?php echo $catSlug; ?>" class="gd-category">
-                    <svg width="6" height="6" viewBox="0 0 6 6" fill="none"
-                      xmlns="http://www.w3.org/2000/svg">
-                      <path fill="#3D564A" d="M0 0h6v6H0z"></path>
-                    </svg>
-                    <?php echo $catName; ?>
-                  </a>
-                  <a href="<?php echo the_permalink() ?>" class="gd-title">
-                    <?php echo  wp_trim_words(get_the_title(), 10) ?>
-                  </a>
+                <a href="<?php echo $catSlug; ?>" class="gd-category">
+                  <svg width="6" height="6" viewBox="0 0 6 6" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill="#3D564A" d="M0 0h6v6H0z"></path>
+                  </svg>
+                  <?php echo $catName; ?>
+                </a>
+                <a href="<?php echo the_permalink() ?>" class="gd-title">
+                  <?php echo  wp_trim_words(get_the_title(), 10) ?>
+                </a>
 
               </div>
-            <?php
+        <?php
 
           }
 
@@ -195,12 +195,12 @@ get_header();
 
       endif;
       wp_reset_postdata();
-?>
+        ?>
 
 
-  </div>
-</div>
-<!-- Section 5 =========== END -->
+            </div>
+    </div>
+    <!-- Section 5 =========== END -->
 
-<?php
-get_footer();
+    <?php
+    get_footer();
