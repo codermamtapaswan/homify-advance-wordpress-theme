@@ -15,13 +15,15 @@ if (!defined('ABSPATH')) {
 
 get_header();
 
-if (is_active_sidebar('homify-front-page-sidebar')) {
-  dynamic_sidebar('homify-front-page-sidebar');
-}
+
+// if (is_active_sidebar('homify-front-page-sidebar')) {
+//   dynamic_sidebar('homify-front-page-sidebar');
+// }
+
 ?>
 <!-- Section 4 ================= START -->
 <div class="container gd-con-3">
-  <div class="gd-sep">Latest Post</div>
+  <!-- <div class="gd-sep">Latest Post</div> -->
   <div class="scroll-cont row">
     <?php
     $sec_4_args = array(
@@ -62,7 +64,7 @@ if (is_active_sidebar('homify-front-page-sidebar')) {
                 <?php echo  wp_trim_words(get_the_title(), 10) ?>
               </a>
               <div class="gd-timeline">
-                <a href="<?php echo get_author_posts_url($post->ID) ?>" class="gd-author">
+                <a href="<?php echo get_author_posts_url(get_the_author_meta('ID')) ?>" class="gd-author">
                   <?php echo get_the_author() ?>
                 </a>
                 <span>2 min read</span>
@@ -91,7 +93,7 @@ if (is_active_sidebar('homify-front-page-sidebar')) {
       $sec_4_args = array(
         'post_type' => 'post',
         'post_status' => 'publish',
-        'posts_per_page' => 5,
+        'posts_per_page' => 6,
         'cat' => 327,
         'order' => 'DESC',
         'orderby' => 'date'
@@ -107,42 +109,69 @@ if (is_active_sidebar('homify-front-page-sidebar')) {
           $catID = get_cat_ID($catName);
           $catSlug = get_category_link($catID);
 
-          if(){}
-      ?>
-          <div class="gd-bg-cont">
-            <div class="gd-card grid-50">
-              <div class="gd-card-content">
-                <a href="<?php echo $catSlug; ?>" class="gd-category-btn">
-                  <?php echo $catName; ?>
-                </a>
-                <a href="<?php echo the_permalink() ?>" class="gd-big-title">
-                  <?php echo  wp_trim_words(get_the_title(), 10) ?>
-                </a>
-                <div class="gd-timeline">
-                  <a href="<?php echo get_author_posts_url($post->ID) ?>" class="gd-author">
-                    <?php echo get_the_author() ?>
-                  </a>
+          if ($query->current_post === 0) {
+            ?>
+              <div class="gd-bg-cont">
+                <div class="gd-card grid-50">
+                  <div class="gd-card-content">
+                    <a href="<?php echo $catSlug; ?>" class="gd-category-btn">
+                      <?php echo $catName; ?>
+                    </a>
+                    <a href="<?php echo the_permalink() ?>" class="gd-big-title">
+                      <?php echo  wp_trim_words(get_the_title(), 10) ?>
+                    </a>
+                    <div class="gd-timeline">
+                      <a href="<?php echo get_author_posts_url(get_the_author_meta('ID')) ?>" class="gd-author">
+                        <?php echo get_the_author() ?>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="img-placeholder">
+                    <?php
+                    if (has_post_thumbnail()) {
+                      has_post_thumbnail('post-thumbnail', ['class' => 'img-fluid']);
+                    } ?>
+                  </div>
                 </div>
               </div>
-              <div class="img-placeholder">
-                <?php
-                if (has_post_thumbnail()) {
-                  has_post_thumbnail('post-thumbnail', ['class' => 'img-fluid']);
-                } ?>
-              </div>
-            </div>
-          </div>
+            <?php
+          } else if ($query->current_post === 1) {
+            ?>
+              <div class="row row-gap gd-shadow-cont">
+              <div class="col-lg-6">
+                <div class="gd-card grid-md-30">
+                  <div class="img-placeholder">
+                    <?php
+                    if (has_post_thumbnail()) {
+                      has_post_thumbnail('post-thumbnail', ['class' => 'img-fluid']);
+                    } ?>
+                  </div>
+                  <div class="gd-card-content">
+                    <a href="<?php echo $catSlug; ?>" class="gd-category">
+                      <svg width="6" height="6" viewBox="0 0 6 6" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill="#3D564A" d="M0 0h6v6H0z"></path>
+                      </svg>
+                      <?php echo $catName; ?>
+                    </a>
+                    <a href="<?php echo the_permalink() ?>" class="gd-title">
+                      <?php echo  wp_trim_words(get_the_title(), 10) ?>
+                    </a>
+                    <div class="gd-timeline">
+                      <a href="<?php echo get_author_posts_url(get_the_author_meta('ID')) ?>" class="gd-author">
+                        <?php echo get_the_author() ?>
+                      </a>
+                      <span>2 min read</span>
+                    </div>
+                  </div>
 
-          <div class="row row-gap gd-shadow-cont">
-            <div class="col-lg-6">
-              <div class="gd-card grid-md-30">
-                <div class="img-placeholder">
-                  <?php
-                  if (has_post_thumbnail()) {
-                    has_post_thumbnail('post-thumbnail', ['class' => 'img-fluid']);
-                  } ?>
                 </div>
-                <div class="gd-card-content">
+              </div>
+            <?php
+          } else {
+            if ($query->current_post === 2) echo '<div class="col-lg-6">';
+            ?>
+              <div class="gd-card-content border-bottom">
                   <a href="<?php echo $catSlug; ?>" class="gd-category">
                     <svg width="6" height="6" viewBox="0 0 6 6" fill="none"
                       xmlns="http://www.w3.org/2000/svg">
@@ -153,36 +182,17 @@ if (is_active_sidebar('homify-front-page-sidebar')) {
                   <a href="<?php echo the_permalink() ?>" class="gd-title">
                     <?php echo  wp_trim_words(get_the_title(), 10) ?>
                   </a>
-                  <div class="gd-timeline">
-                    <a href="<?php echo get_author_posts_url($post->ID) ?>" class="gd-author">
-                      <?php echo get_the_author() ?>
-                    </a>
-                    <span>2 min read</span>
-                  </div>
-                </div>
 
               </div>
-            </div>
+            <?php
 
-            <div class="col-lg-6">
-              <div class="gd-card-content border-bottom">
-                <a href="<?php echo $catSlug; ?>" class="gd-category">
-                  <svg width="6" height="6" viewBox="0 0 6 6" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fill="#3D564A" d="M0 0h6v6H0z"></path>
-                  </svg>
-                  <?php echo $catName; ?>
-                </a>
-                <a href="<?php echo the_permalink() ?>" class="gd-title">
-                  <?php echo  wp_trim_words(get_the_title(), 10) ?>
-                </a>
+          }
 
-              </div>
-            </div>
-          </div>
-    </div>
-<?php
         endwhile;
+
+        if ($query->post_count > 2) echo '</div>'; // closing div col-lg-6
+        if ($query->post_count > 0) echo '</div>'; // closing row
+
       endif;
       wp_reset_postdata();
 ?>

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * The template for displaying archive pages.
+ * The template for displaying Search results pages.
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
@@ -66,6 +66,8 @@ get_header(); ?>
       </div>
       <?php
     endwhile;
+  else:
+    get_template_part('temlate-parts/content','search-not-found');
   endif;
   ?>
   </div>
