@@ -117,7 +117,7 @@ if (is_active_sidebar('homify-front-page-sidebar')) {
                   <a href="<?php echo $catSlug; ?>" class="gd-category-btn">
                     <?php echo $catName; ?>
                   </a>
-                  <a href="<?php echo the_permalink() ?>" class="gd-big-title">
+                  <a href="<?php the_permalink() ?>" class="gd-big-title">
                     <?php echo  wp_trim_words(get_the_title(), 10) ?>
                   </a>
                   <div class="gd-timeline">
@@ -143,7 +143,7 @@ if (is_active_sidebar('homify-front-page-sidebar')) {
                   <div class="img-placeholder">
                     <?php
                     if (has_post_thumbnail()) {
-                      has_post_thumbnail('post-thumbnail', ['class' => 'img-fluid']);
+                     echo  has_post_thumbnail('post-thumbnail', ['class' => 'img-fluid']);
                     } ?>
                   </div>
                   <div class="gd-card-content">
@@ -154,12 +154,12 @@ if (is_active_sidebar('homify-front-page-sidebar')) {
                       </svg>
                       <?php echo $catName; ?>
                     </a>
-                    <a href="<?php echo the_permalink() ?>" class="gd-title">
+                    <a href="<?php the_permalink() ?>" class="gd-title">
                       <?php echo  wp_trim_words(get_the_title(), 10) ?>
                     </a>
                     <div class="gd-timeline">
                       <a href="<?php echo get_author_posts_url(get_the_author_meta('ID')) ?>" class="gd-author">
-                        <?php echo get_the_author() ?>
+                        <?php the_author() ?>
                       </a>
                       <span>2 min read</span>
                     </div>
@@ -179,7 +179,7 @@ if (is_active_sidebar('homify-front-page-sidebar')) {
                   </svg>
                   <?php echo $catName; ?>
                 </a>
-                <a href="<?php echo the_permalink() ?>" class="gd-title">
+                <a href="<?php the_permalink() ?>" class="gd-title">
                   <?php echo  wp_trim_words(get_the_title(), 10) ?>
                 </a>
 

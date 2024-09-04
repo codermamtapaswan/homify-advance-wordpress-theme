@@ -17,7 +17,7 @@ get_header(); ?>
 
 <div class="blog-header">
   <div class="container  grid">
-    <?php if (have_posts()) : while (have_posts()) :  the_post(); ?>
+    <?php  while (have_posts()) :  the_post(); ?>
         <p id="breadcrumbs">
           <span>
             <span>
@@ -32,7 +32,7 @@ get_header(); ?>
           </span>
         </p>
 
-        <h1><?php echo get_the_title(); ?></h1>
+        <h1><?php the_title(); ?></h1>
 
 
         <div class="blog-detail flex-wrap">
@@ -60,17 +60,14 @@ get_header(); ?>
               </defs>
             </svg>
 
-            Updated on <?php echo get_the_date('F j,Y') ?>
+            Updated on <?php echo the_modified_date('F j,Y') ?>
           </span>
           <span class="gd-timeline">
             Review by <a href="#">Manpreet Kaur Sandhu</a>
           </span>
 
         </div>
-    <?php
-      endwhile;
-    endif;
-    ?>
+    <?php endwhile; ?>
   </div>
 </div>
 
@@ -85,7 +82,7 @@ get_header(); ?>
 
     <div class="col-lg-8">
       <div class="blog-content">
-        <?php echo $blog_content = apply_filters('the_content', get_the_content()) ?>
+        <?php echo apply_filters('the_content', get_the_content()) ?>
       </div>
     </div>
 
@@ -101,6 +98,7 @@ get_header(); ?>
         if ($categories) {
           $cat_ids = array();
           foreach ($categories as $cat) {
+            var_dump($cat);
             $cat_ids = $cat->term_id;
           }
         }

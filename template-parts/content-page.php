@@ -3,10 +3,10 @@
           <div class="page-header grid">
             <p id="breadcrumbs"><span><span class="breadcrumb_last" aria-current="page">Page Template</span></span>
             </p>
-            <h1><?php echo get_the_title(); ?></h1>
+            <h1><?php the_title(); ?></h1>
             <div class="gd-timeline">
               <strong>Last Updated:</strong>
-              <span><?php echo get_the_modified_date('F j, Y') ?></span>
+              <span><?php the_modified_date('F j, Y') ?></span>
             </div>
 
           </div>

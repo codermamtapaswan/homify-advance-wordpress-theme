@@ -21,10 +21,10 @@ get_header();
     <div class="page-header grid">
         <p id="breadcrumbs"><span>
                 <span class="breadcrumb_last" aria-current="page">Author Sinlge Page</span></span></p>
-        <h1><?php echo get_the_author() ?></h1>
+        <h1><?php the_author() ?></h1>
         <div class="gd-timeline">
             <strong>Last Updated:</strong>
-            <span><?php echo get_the_modified_date('F j, Y') ?></span>
+            <span><?php the_modified_date('F j, Y') ?></span>
         </div>
     </div>
 
@@ -132,7 +132,7 @@ get_header();
         </div>
         <div class="col-lg-12">
 
-            <div class="gd-sep"><?php echo get_the_author() ?>'s Posts</div>
+            <div class="gd-sep"><?php the_author() ?>'s Posts</div>
 
             <div class="row row-gap">
 

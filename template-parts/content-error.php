@@ -1,3 +1,5 @@
+<?php // echo $args[0]; ?>
+
 <!-- Section 1 ================= START -->
 <div class="container">
 

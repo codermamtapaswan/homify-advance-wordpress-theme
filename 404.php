@@ -16,7 +16,7 @@ if (!defined('ABSPATH')) {
 get_header();
 
 
-get_template_part('template-parts/content', 'error');
+get_template_part('template-parts/content', 'error', array('hey this is 404.php'));
 
 
 get_footer();

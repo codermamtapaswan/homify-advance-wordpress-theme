@@ -44,7 +44,7 @@ get_header(); ?>
           <div class="img-placeholder">
             <?php
             if (has_post_thumbnail()) {
-              has_post_thumbnail('post-thumbnail', ['class' => 'img-fluid']);
+              echo get_the_post_thumbnail(null, 'post-thumbnail', ['class' => 'img-fluid']);
             }
             ?>
           </div>
@@ -52,12 +52,12 @@ get_header(); ?>
             <a href="<?php echo $catSlug; ?>" class="gd-category-btn">
               <?php echo $catName; ?>
             </a>
-            <a href="<?php echo the_permalink() ?>" class="gd-title">
-              <?php echo  wp_trim_words(get_the_title(), 10) ?>
+            <a href="<?php the_permalink() ?>" class="gd-title">
+              <?php echo  wp_trim_words(the_title(), 10) ?>
             </a>
             <div class="gd-timeline">
               <a href="<?php echo get_author_posts_url(get_the_author_meta('ID')) ?>" class="gd-author">
-                <?php echo get_the_author() ?>
+                <?php the_author() ?>
               </a>
               <span>2 min read</span>
             </div>

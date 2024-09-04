@@ -1,3 +1,6 @@
+<?php
+  // is archive or not
+?>
       <div class="sidebar">
         <div class="gd-toc-wrap">
           <div class="toc-header">
