@@ -31,8 +31,8 @@ class Widget
       'name' => __('Front Page', 'homify'),
       'id' => 'homify-front-page-sidebar',
       'description' => __('Widget area for the front page', 'homify'),
-      'before_widget' => '',
-      'after_widget' => '',
+      'before_widget' => '<div class="my-widget">',
+      'after_widget' => '</div>',
       'before_title' => '',
       'after_title' => '',
     ));
