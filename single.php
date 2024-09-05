@@ -17,56 +17,56 @@ get_header(); ?>
 
 <div class="blog-header">
   <div class="container  grid">
-    <?php  while (have_posts()) :  the_post(); ?>
-        <p id="breadcrumbs">
+    <?php while (have_posts()) :  the_post(); ?>
+      <p id="breadcrumbs">
+        <span>
           <span>
-            <span>
-              <a href="#">Home</a>
-            </span>
-            <span>
-              <a href="#">Blog</a>
-            </span>
-            <span>
-              <a href="#">Banking</a>
-            </span>
+            <a href="#">Home</a>
           </span>
-        </p>
-
-        <h1><?php the_title(); ?></h1>
-
-
-        <div class="blog-detail flex-wrap">
-
-          <span class="gd-timeline">By <a href="<?php echo esc_url(get_author_posts_url(get_the_author_meta('ID'))); ?>"><?php echo get_the_author(); ?></a>
+          <span>
+            <a href="#">Blog</a>
           </span>
-          <span class="gd-timeline">
-            <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <g clip-path="url(#clip0_511_6471)">
-                <path
-                  d="M12.6667 3.27771H3.33333C2.59695 3.27771 2 3.87466 2 4.61104V13.9444C2 14.6808 2.59695 15.2777 3.33333 15.2777H12.6667C13.403 15.2777 14 14.6808 14 13.9444V4.61104C14 3.87466 13.403 3.27771 12.6667 3.27771Z"
-                  stroke="#3D564A" stroke-width="1.5" stroke-linecap="round"
-                  stroke-linejoin="round" />
-                <path d="M10.6665 1.94446V4.61112" stroke="#3D564A" stroke-width="1.5"
-                  stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M5.3335 1.94446V4.61112" stroke="#3D564A" stroke-width="1.5"
-                  stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M2 7.27771H14" stroke="#3D564A" stroke-width="1.5" stroke-linecap="round"
-                  stroke-linejoin="round" />
-              </g>
-              <defs>
-                <clipPath id="clip0_511_6471">
-                  <rect width="16" height="16" fill="white" transform="translate(0 0.611084)" />
-                </clipPath>
-              </defs>
-            </svg>
-
-            Updated on <?php echo the_modified_date('F j,Y') ?>
+          <span>
+            <a href="#">Banking</a>
           </span>
-          <span class="gd-timeline">
-            Review by <a href="#">Manpreet Kaur Sandhu</a>
-          </span>
+        </span>
+      </p>
 
-        </div>
+      <h1><?php the_title(); ?></h1>
+
+
+      <div class="blog-detail flex-wrap">
+
+        <span class="gd-timeline">By <a href="<?php echo esc_url(get_author_posts_url(get_the_author_meta('ID'))); ?>"><?php the_author(); ?></a>
+        </span>
+        <span class="gd-timeline">
+          <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_511_6471)">
+              <path
+                d="M12.6667 3.27771H3.33333C2.59695 3.27771 2 3.87466 2 4.61104V13.9444C2 14.6808 2.59695 15.2777 3.33333 15.2777H12.6667C13.403 15.2777 14 14.6808 14 13.9444V4.61104C14 3.87466 13.403 3.27771 12.6667 3.27771Z"
+                stroke="#3D564A" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+              <path d="M10.6665 1.94446V4.61112" stroke="#3D564A" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M5.3335 1.94446V4.61112" stroke="#3D564A" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M2 7.27771H14" stroke="#3D564A" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </g>
+            <defs>
+              <clipPath id="clip0_511_6471">
+                <rect width="16" height="16" fill="white" transform="translate(0 0.611084)" />
+              </clipPath>
+            </defs>
+          </svg>
+
+          Updated on <?php the_modified_date('F j,Y') ?>
+        </span>
+        <span class="gd-timeline">
+          Review by <a href="#">Manpreet Kaur Sandhu</a>
+        </span>
+
+      </div>
     <?php endwhile; ?>
   </div>
 </div>
@@ -98,7 +98,7 @@ get_header(); ?>
         if ($categories) {
           $cat_ids = array();
           foreach ($categories as $cat) {
-            var_dump($cat);
+            // var_dump($cat);
             $cat_ids = $cat->term_id;
           }
         }

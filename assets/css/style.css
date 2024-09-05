@@ -292,6 +292,7 @@ h6,
 
 .gd-timeline>* {
   font-size: var(--fs-4);
+  text-transform: capitalize;
 }
 
 
